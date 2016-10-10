@@ -1,6 +1,6 @@
 #Markdown Preview
 
-This is a [http://freecodecamp.com](FreeCodeCamp.com) project.  The goal is to create a dynamic Markdown previewer, made with React and SCSS.  This app will use the [https://www.npmjs.com/package/marked](Marked) node package for the translation.  This app was initiated using the [https://github.com/facebookincubator/create-react-app](Create-React-App) package.  The complete user stories are:
+This is a [FreeCodeCamp.com](http://freecodecamp.com) project.  The goal is to create a dynamic Markdown previewer, made with React and SCSS.  This app will use the [Marked](https://www.npmjs.com/package/marked) node package for the translation.  This app was initiated using the [Create-React-App](https://github.com/facebookincubator/create-react-app) package.  The required user stories are:
 
 
 **User Story:** I can type GitHub-flavored Markdown into a text area.
