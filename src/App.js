@@ -1,11 +1,14 @@
 /* eslint-disable*/
 import React, { Component } from 'react';
 import './App.css';
+import Converter from './Converter';
 
 class App extends Component {
   render() {
     return (
-      <div class="test"><h1>Hello World!</h1></div>
+      <div id="appWrap">
+        <Converter />
+      </div>
     );
   }
 }
