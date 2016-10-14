@@ -1,29 +1,32 @@
 /* eslint-disable*/
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+var marked = require('marked');
+marked.setOptions({
+    renderer: new marked.Renderer(),
+    gfm: true,
+    tables: true,
+    breaks: false,
+    pedantic: false,
+    sanitize: true,
+    smartLists: false,
+    smartypants: false
+});
 
 class Converter extends Component{
     constructor(props) {
         super(props);
-        this.state = {rawText: "", fancyText: ""};
+        this.state = {rawText: ""};
         this.textInput = this.textInput.bind(this);
-        this.testButton = this.testButton.bind(this);
-        this.printFancy = this.printFancy.bind(this);        
     }
-    printFancy(){
-        console.log("state", this.state);
-    }
+    
 
     textInput(e) {  
-        this.setState({rawText:e.target.value});
-        this.setState({fancyText:e.target.value});
-        console.log("text was input", e.target.value);        
+        this.setState({rawText:e.target.value});    
     }
-    testButton(){
-        console.log("testbutton Pressed:", this);
-        console.log("testStates: ", this.state.rawText, this.state.fancyText);
-    }
+
     render() {
+        var html = marked(this.state.rawText || " ");
         return (
             <div className="converter">
                 <textarea 
@@ -32,44 +35,14 @@ class Converter extends Component{
                     placeholder="Enter your raw markdown"
                     onChange={this.textInput}
                     value={this.state.rawText}
-                >
-                </textarea>
+                />
+                
                 <div 
                     className="output"
-                >{this.state.fancyText}
-                </div>    
+                    dangerouslySetInnerHTML={{__html: html}}
+                />                                     
             </div>
         )
     }
 }
-
-
-class Output extends Component{
-    constructor(props) {
-        super(props);
-        this.state = {fancyText: ""};
-        this.printFancy = this.printFancy.bind(this);
-        this.outputTestButton = this.outputTestButton.bind(this);
-    }
-
-    outputTestButton(a){
-        console.log(this);
-        this.setState({fancyText:Converter.state.rawText});
-
-    }
-    printFancy(letter){
-        console.log("printFacny called");
-    }
-
-    render(){
-        return (
-            <div className="output">
-                <button onClick={this.outputTestButton}>outputTest</button>
-            </div>
-        )
-    }
-}
-
-
-export default Converter;
-    
+export default Converter;    
