@@ -6,7 +6,7 @@ marked.setOptions({
     renderer: new marked.Renderer(),
     gfm: true,
     tables: true,
-    breaks: false,
+    breaks: true,
     pedantic: false,
     sanitize: true,
     smartLists: false,
@@ -17,16 +17,22 @@ class Converter extends Component{
     constructor(props) {
         super(props);
         this.state = {rawText: ""};
+        this.state = {fancyText: ""};
         this.textInput = this.textInput.bind(this);
+        this.markdownText = this.markdownText.bind(this);
     }
-    
-
     textInput(e) {  
-        this.setState({rawText:e.target.value});    
+        this.setState({rawText:e.target.value});            
+    }
+    markdownText(){
+        if (this.state.rawText){
+            var rawMarkdown = marked(this.state.rawText, {sanitize:true} || "");
+            return {__html: rawMarkdown}
+        }
+        return {__html:""}
     }
 
     render() {
-        var html = marked(this.state.rawText || " ");
         return (
             <div className="converter">
                 <textarea 
@@ -37,10 +43,12 @@ class Converter extends Component{
                     value={this.state.rawText}
                 />
                 
-                <div 
+                <div
                     className="output"
-                    dangerouslySetInnerHTML={{__html: html}}
-                />                                     
+                    dangerouslySetInnerHTML={this.markdownText()}
+                >
+                
+                </div>                                     
             </div>
         )
     }
