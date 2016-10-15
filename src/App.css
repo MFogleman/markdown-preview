@@ -1,13 +1,33 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+* {
+  color: #212121; }
+
+html,
+#appWrap {
+  background-color: #455A64; }
+
 div.converter {
   width: 90vw;
   margin: 0 auto;
   vertical-align: top; }
 
-.input, .output {
+.header {
+  position: relative;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center; }
+
+.header h1 {
+  font-family: "Montserrat", sans-serif;
+  color: #FFFFFF;
+  font-weight: lighter; }
+
+.input,
+.output {
+  background-color: #CFD8DC;
   display: inline-block;
   position: relative;
   vertical-align: top;
-  border: solid black 2px;
   box-sizing: border-box;
   margin-top: 1vw;
   padding: 1%;
@@ -21,15 +41,11 @@ div.converter {
   overflow-y: scroll; }
 
 .input {
-  position: relative;
   margin-right: 3vw;
-  vertical-align: top;
   padding-top: 2.3%; }
 
 .output {
-  position: relative;
-  margin-left: 3vw;
-  vertical-align: top; }
+  margin-left: 3vw; }
 
 textarea {
   box-sizing: border-box;
@@ -37,8 +53,21 @@ textarea {
   height: 42vw;
   resize: none; }
 
-textarea:active {
-  border-color: black;
-  outline-style: none; }
+.input:focus {
+  outline: solid #009688; }
+
+::-webkit-input-placeholder {
+  color: #212121; }
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #212121; }
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #212121; }
+
+:-ms-input-placeholder {
+  color: #212121; }
 
 /*# sourceMappingURL=App.css.map */
