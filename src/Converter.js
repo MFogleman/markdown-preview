@@ -35,23 +35,19 @@ class Converter extends Component{
     render() {
         return (
             <div className="converter">
-                
                 <div className="header">
                     <h1>Markdown Preview</h1>
                 </div>
-                
                 <textarea 
                     name="inputarea"
                     className="input" 
                     placeholder="Enter your raw Markdown here..."
                     onChange={this.textInput}
                 />
-                
                 <div
                     className="output"
                     dangerouslySetInnerHTML={this.markdownText()}
                 />
-                                                     
             </div>
         )
     }
